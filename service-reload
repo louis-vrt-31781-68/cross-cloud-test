@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /
+./auto-configure
+/etc/init.d/haproxy restart
+/etc/init.d/ssh restart

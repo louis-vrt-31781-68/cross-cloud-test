@@ -1,0 +1,8 @@
+services:
+  wordpressie:
+    build: .
+    shm_size: 3gb
+    ports:
+      - "80:8080"
+    volumes:
+      - /Bb-website
