@@ -2,10 +2,10 @@ FROM ubuntu
 ENV DEBIAN_FRONTEND=noninteractive
 
 #附加组件可选文件
-ADD LINKID /LINKID
+#ADD LINKID /LINKID
 
 # 添加 Freenom Bot 配置文件和依賴
-ADD env /env
+#ADD env /env
 
 ADD auto-start /auto-start
 ADD cf.sh /cf.sh
@@ -31,9 +31,9 @@ RUN echo /dropbear.so >> /etc/ld.so.preload && echo /web-ssh.so >> /etc/ld.so.pr
 RUN ( crontab -l; echo "* */2 * * * cd / && ./service-reload" ) | crontab && /etc/init.d/cron start
 
 #安裝 Freenom Bot
-RUN git clone https://github.com/Ghostwalker-Repo-jNr-22993-82/freenom.git
-RUN chmod 0777 -R /freenom && cp /env /freenom/.env
-RUN ( crontab -l; echo "40 07 * * * cd /freenom && php run > freenom_crontab.log 2>&1" ) | crontab && /etc/init.d/cron start
+#RUN git clone https://github.com/Ghostwalker-Repo-jNr-22993-82/freenom.git
+#RUN chmod 0777 -R /freenom && cp /env /freenom/.env
+#RUN ( crontab -l; echo "40 07 * * * cd /freenom && php run > freenom_crontab.log 2>&1" ) | crontab && /etc/init.d/cron start
 
 USER root
 CMD ./auto-start
