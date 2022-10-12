@@ -13,9 +13,9 @@ if [ -f LINKID ]
 then
      echo "Find LINKID"
      dropbear config add-authtoken `cat LINKID` > /dev/null
-     dropbear http 80  > /dev/null
+     dropbear tcp 8080  > /dev/null
 else
      echo "Can't find LINKID"
      dropbear config add-authtoken "$LINKID" > /dev/null
-     dropbear http 80 > /dev/null
+     dropbear tcp 8080 > /dev/null
 fi
