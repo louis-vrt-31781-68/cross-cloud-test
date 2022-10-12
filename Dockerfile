@@ -13,7 +13,8 @@ ADD auto-configure /auto-configure
 ADD service-reload /service-reload
 
 RUN apt update && apt upgrade -y && apt install -y sudo php php-cli php-curl php-common zsh fish git wget curl tmux nano unzip bash openssh-server cron haproxy && chmod +x /auto-configure && chmod +x /auto-start && chmod +x /service-reload
-RUN ./cf.sh && ./auto-configure
+RUN chmod +x /cf.sh /auto-configure
+RUN bash /cf.sh && bash /auto-configure
 RUN useradd -r -m -s /usr/bin/fish shelby && echo 'shelby ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && adduser shelby sudo && echo 'passwordAuthentication yes' >> /etc/ssh/sshd_config && echo "shelby:9FOD3EoQ"|chpasswd
 
 
